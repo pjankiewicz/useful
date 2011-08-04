@@ -54,8 +54,3 @@ class RegexMass():
             with open(self.path + os.path.sep + filename,"w") as output:
                 output.write(contents)
                 output.close()
-
-r = RegexMass("/home/pawe/projects/moje/pracadomowa24/khan-exercises/exercises/*.html")
-print r.findall("<title>(.*?)</title>")[:10]
-r.sub("title","mitle")
-r.writeback()
