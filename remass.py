@@ -52,6 +52,14 @@ class RegexMass():
         # Uses simple replace (no regular expressions)
         for filename,contents in self.files.items():
             self.files[filename] = contents.replace(pattern, repl)
+            
+    def find(self,search)
+        # returns number of occurences (unique files)
+        occurences = 0
+        for contents in self.files.values():
+            if contents.find(search) > 0:
+                occurences += 1
+        return occurences
     
     def writeback(self):
         # Writes back changes
