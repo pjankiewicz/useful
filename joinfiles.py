@@ -2,7 +2,7 @@ import os,shutil,fnmatch
 
 def joinfiles(path,output,recursive=False):
     """
-    Join files (matches wildcards) to one file"
+    Join files (matches wildcards) to one file
     """
     
     # otwieram plik do zapisu
@@ -12,7 +12,7 @@ def joinfiles(path,output,recursive=False):
     wildcard = wildcard_split[-1]
 
     for r,d,fi in os.walk(path):
-        if recursive or r == ".":
+        if recursive or (r == "." or r == path):
             for files in fi:
                 if fnmatch.fnmatch(files, wildcard):
                     with open(os.path.join(r,files)) as g:
