@@ -47,7 +47,12 @@ class RegexMass():
         pattern = re.compile(pattern, re_options)
         for filename,contents in self.files.items():
             self.files[filename] = re.sub(pattern, repl, contents)
-            
+    
+    def replace(self,pattern,repl)
+        # Uses simple replace (no regular expressions)
+        for filename,contents in self.files.items():
+            self.files[filename] = contents.replace(pattern, repl)
+    
     def writeback(self):
         # Writes back changes
         for filename,contents in self.files.items():
