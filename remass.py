@@ -53,7 +53,7 @@ class RegexMass():
         for filename,contents in self.files.items():
             self.files[filename] = contents.replace(pattern, repl)
             
-    def find(self,search)
+    def find(self,search):
         # returns number of occurences (unique files)
         occurences = 0
         for contents in self.files.values():
