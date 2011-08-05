@@ -1,15 +1,21 @@
 import os,shutil,fnmatch
 
-def joinfiles(path,output):
+def joinfiles(path,output,recursive=False):
+    """
+    Join files (matches wildcards) to one file"
+    """
+    
     # otwieram plik do zapisu
-    f=open(output,"a")
+    f=open(output,"w")
     wildcard_split = path.split(os.path.sep)
     path = os.path.sep.join(wildcard_split[:-1])
     wildcard = wildcard_split[-1]
-    
+
     for r,d,fi in os.walk(path):
-    for files in fi:
-        if fnmatch.fnmatch(files, wildcard):
-            with open(os.path.join(r,files)) as g:
-                shutil.copyfileobj(g,f)
+        if recursive or r == ".":
+            for files in fi:
+                if fnmatch.fnmatch(files, wildcard):
+                    with open(os.path.join(r,files)) as g:
+                        shutil.copyfileobj(g,f)
+    
     f.close()
