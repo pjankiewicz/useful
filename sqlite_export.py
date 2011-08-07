@@ -36,11 +36,14 @@ class UnicodeWriter:
                     pass
             self.writerow(row)
 
-def export(database,table,csvfile,where="1=1"):
+def export(database,table, csvfile, where="1=1", fields="*"):
+    if type(fields)==list:
+        fields = ",".join(fields)
+    
     conn = sqlite3.connect(database)
     
     c = conn.cursor()
-    c.execute('select * from %s where %s' % (table,where))
+    c.execute('select %s from %s where %s' % (fields,table,where))
     
     writer = UnicodeWriter(open(csvfile, "wb"))
     writer.writerows(c)
