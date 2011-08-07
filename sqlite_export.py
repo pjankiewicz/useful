@@ -28,6 +28,12 @@ class UnicodeWriter:
 
     def writerows(self, rows):
         for row in rows:
+            row = list(row)
+            for ind, r in enumerate(row):
+                try:
+                    row[ind] = r.replace("\n","\\n")
+                except AttributeError:
+                    pass
             self.writerow(row)
 
 def export(database,table,csvfile,where="1=1"):
